@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/stock_watchlist_db
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
+  liquibase:
+    change-log: classpath:/db/changelog.xml
+
+logging:
+  level:
+    stdout: INFO
+    db: ERROR
+
+server:
+  context-path: /
+  port: 8090
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 30000
+        loggerLevel: full
+
+api:
+  seekingAlpha:
+    url: https://seekingalpha.com/api/v3
+  seekingAlphaQuotes:
+    url: https://finance-api.seekingalpha.com
